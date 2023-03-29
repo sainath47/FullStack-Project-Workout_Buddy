@@ -11,7 +11,9 @@ app.use(express.json());
 //routes
 console.log("MONGODB_URI", process.env.MONGODB_URI);
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+    )
   .then(
     console.log("MongoDB connected"),
     app.listen(process.env.PORT, () => {
