@@ -21,6 +21,15 @@ app.use((req,res,next) => {
 app.use('/api/workouts',workoutRoutes)
 app.use('/api/user',userRoutes)
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
 
 
 
