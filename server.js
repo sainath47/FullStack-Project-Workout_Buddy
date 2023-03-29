@@ -9,8 +9,6 @@ const app = express()
 app.use(express.json())
 
 //routes
-mongoose.connect(process.env.MONGODB_URI).then(console.log('MongoDB connected')).catch((error)=>{console.log(error)})
-
 app.use((req,res,next) => {
     console.log(req.path, req.method);
     next()
@@ -32,6 +30,9 @@ app.get("*", function (req, res) {
 
 
 //listen for requests
-app.listen(process.env.PORT,()=>{console.log('listening on port 4000')})
+app.listen(process.env.PORT,()=>{console.log('listening on port 4000')
+
+mongoose.connect(process.env.MONGODB_URI).then(console.log('MongoDB connected')).catch((error)=>{console.log(error)})
+})
 
 
