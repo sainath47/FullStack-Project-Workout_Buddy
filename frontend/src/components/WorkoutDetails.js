@@ -38,7 +38,7 @@ console.log(json, "json");
       </p>
       <p><strong>Number of reps: </strong>{workout.reps}</p>
       <p>{workout.createdAt}</p>
-      <span onClick={handleClick}>delete</span>
+      <span className="material -symbols-outlined" onClick={handleClick} >delete</span>
     </div>
   );
 };
