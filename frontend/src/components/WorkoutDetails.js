@@ -10,11 +10,13 @@ const {user} = useAuthContext()
 
 const handleClick = async ()=> {
   if(!user){
-    return
+    return 
   }
 
-  const response = await fetch('/api/workouts/' + workout._id, {method: 'DELETE'},
-  {
+// console.log(user.token, "token");
+
+  const response = await fetch('/api/workouts/' + workout._id, {method: 'DELETE',
+  
     headers: {
       'Authorization': `Bearer ${user.token}`
     }
@@ -22,7 +24,7 @@ const handleClick = async ()=> {
   )
 
   const json = await response.json()//this will return the document which is deleted & which will be filtered out from the data
-
+console.log(json, "json");
   if(response.ok){
     dispatch({type:'DELETE_WORKOUT', payload: json.data})
   }
